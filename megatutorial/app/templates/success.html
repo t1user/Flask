@@ -1,0 +1,12 @@
+<html>
+  <head>
+    <title>Result list from LinedIn</title>
+  </head>
+  <body>
+    <h1>This is a list of results returned by LinedIn</h1>
+    <ul>
+      {{% for field in fields %}}
+      <li>{{ field }}: {{ data.field }}</li>    
+    </ul>
+  </body>
+</html>
