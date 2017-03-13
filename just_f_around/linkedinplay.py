@@ -59,8 +59,7 @@ def request_token():
 @app.route('/success')
 def authorization_success():
     headers = {
-        'authorization': TOKEN,
-        'connection': 'keep-alive'
+        'authorization': 'Bearer ' + TOKEN
     }
 
     params = {
@@ -84,7 +83,8 @@ def authorization_success():
     )
 
     r = requests.get(
-        'https://api.linkedin.com/v1/people/~:(' + ','.join(fields) + ')?format=json', params=params)
+        'https://api.linkedin.com/v1/people/~:(' +
+        ','.join(fields) + ')?format=json', headers=headers)
 
     data = json.loads(r.text)
     return render_template('success.html',
